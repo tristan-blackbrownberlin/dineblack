@@ -18,11 +18,11 @@ export default ({ restaurants }) => {
   })
 
   // Reducing number of requests to Maps API
-  const restrictedGoogleMapsApiKey =
-    process.env.NODE_ENV === 'production'
-      ? process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
-      : undefined
-  
+  const restrictedGoogleMapsApiKey =process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
+  //  process.env.NODE_ENV === 'production'
+    //  ? process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
+      //: undefined
+
   // For local testing of Google Maps API
   // const restrictedGoogleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY
 
@@ -119,7 +119,7 @@ const Tooltip = ({ tooltip, setTooltip }) => {
                 {phone && <a href={"tel:" + phone}>{phone}</a> }
                 {phone && email && <span> | </span>}
                 {email && <a href={"mailto:" + email}>{email}</a> }
-              </div>  
+              </div>
               {url && (
                 <a
                   href={url.includes('http') ? url : 'https://' + url}

@@ -51,10 +51,10 @@ export default () => {
                 src="/assets/dineinbear.svg"
                 alt="Dine In Bear"
                 className="hidden md:block w-8 h-8"
-              /> 
+              />
               </span>
               <h2 className="hidden sm:inline-block text-2xl">
-                Dine in Berlin
+                The Diaspora Eats
               </h2>
             </a>
           </Link>

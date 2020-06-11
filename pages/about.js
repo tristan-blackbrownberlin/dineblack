@@ -20,14 +20,14 @@ export default () => {
             </h2>
             <p className="max-w-xl text-navy-light text-lg mb-4">
               {content.description}
-              <a href="https://dinecph.dk" target="_blank" rel="noopener">
-                dinecph.dk
+              <a href="https://blackbrownberlin.com" target="_blank" rel="noopener">
+                Black Brown Berlin
               </a>
               .
             </p>
             <p className="max-w-xl text-navy-light text-lg mb-4">
               {content.contact}
-              <a href="mailto:benjamin.mateev@gmail.com">benjamin.mateev@gmail.com</a>.
+              <a href="mailto:hello@blackbrownberlin.com">hello@blackbrownberlin.com</a>.
               .
             </p>
           </div>
@@ -41,12 +41,12 @@ export default () => {
 const pageContent = {
   'de-DE': {
     title: 'Über uns',
-    description: `Die COVID-19 Krise hat Berlin's Restaurantszene hart getroffen. Viele Läden mussten zu machen und fangen nacheinander an Lieferungen ihrer normalen oder neuer Gerichte anzubieten. Wir haben diese Seite gebaut um ihnen zu helfen mehr Leute zu erreichen - forked & inspierrert von`,
+    description: `Die COVID-19 Krise hat Berlin's Restaurantszene hart getroffen. Viele Läden mussten zu machen und fangen nacheinander an Lieferungen ihrer normalen oder neuer Gerichte anzubieten. Wir haben diese Seite gebaut um ihnen zu helfen mehr Leute zu erreichen - von `,
     contact: 'Anfragen zur Seite oder Technik an ',
   },
   'en-GB': {
     title: 'About',
-    description: `The COVID-19 crisis has hit the Berlin restaurant scene very hard. Many establishments have started offering take-out. We've made this site to help spread the word — forked & inspired by `,
+    description: `All cooked food indicates one thing, love of and for ones community.   `,
     contact: 'Most inquiries and site feedback to ',
   },
 }

@@ -7,7 +7,7 @@ module.exports = {
       // pink: '#f582ae', // elements button
       // navy: '#001858', // elements button text
       // 'navy-light': '#172c66', // elements paragraph
-      // teal: '#8bd3dd', // illustration secondary 
+      // teal: '#8bd3dd', // illustration secondary
       // white: '#fff', // white
       // --
       // https://www.happyhues.co/palettes/15
@@ -16,7 +16,7 @@ module.exports = {
       pink: '#ff8ba7', // elements button
       navy: '#33272a', // elements button text
       'navy-light': '#594a4e', // elements paragraph
-      teal: '#ffc6c7', // illustration secondary 
+      teal: '#ffc6c7', // illustration secondary
       white: '#fffffe', // white
       green: '#c3f0ca', // tertiary highlight
     },

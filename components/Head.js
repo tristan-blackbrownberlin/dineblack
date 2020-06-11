@@ -1,12 +1,12 @@
 import Head from 'next/head'
 
 export default ({ children }) => {
-  const title = 'Dine In Berlin'
-  const site_url = 'https://dineinberlin.com'
+  const title = 'The Diaspora Eats'
+  const site_url = 'https://thediasporaeats.com'
   const fb_app_id = "571317996836972"
-  const author = "Benjamin Mateev"
+  const author = "Black Brown Berlin"
   const description =
-    "Your local food joints are struggling during the current crisis — but they're still cooking! Help them keep the lights on, by getting take-out from the best restaurants in Berlin."
+    "Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of the African Diaspora food culture. Show your support and solidarity, by ordering from some of the best Black owned restaurants in Berlin."
   return (
     <Head>
       <meta charset='utf-8' />
@@ -15,7 +15,7 @@ export default ({ children }) => {
       <link rel='manifest' href='/manifest.json' />
       <link rel='apple-touch-icon' href='/apple-icon.png'></link>
       <meta name='theme-color' content='#ff8ba7' />
-      
+
       <link rel="icon" href="https://dineinberlin.com/favicon.png" />
       <title>{title}</title>
       <meta property="og:type" content="website" />

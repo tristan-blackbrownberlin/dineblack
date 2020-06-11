@@ -43,7 +43,7 @@ export default () => {
               </div>
             </div>
             <img
-              src="/assets/bicycle1_dineberlin.png"
+              src="/assets/bicycle1_dineberlins.png"
               alt="Vin og sjov"
               className="hidden md:block w-128"
             />
@@ -57,16 +57,16 @@ export default () => {
 
 const pageContent = {
   'de-DE': {
-    titleBlue: 'Unterstütze deine Restaurants in Berlin',
-    titlePink: 'Bestell zu dir nach hause',
-    description: `Deine geliebten Food Spots kämpfen gerade um ihre Existenz in der Krise - aber sie kochen weiter. Hilf ihnen weiter zu bestehen, in dem du Essen zum Abholen oder Liefern bestellst.`,
+    titleBlue: 'Entdecke die einzigartige Weise wie Essen Menschen und Kulturen',
+    titlePink: 'in der afrikanischen Diaspora verflechtet',
+    description: `Essen bringt Menschen zusammen, verbindet uns und vereinigt Individuuen, Sprachen und Kulturen! Erforsche die diverse Welt der afrikanischen Diaspora -und Esskultur. Zeig deine Unterstützung und Solidarität, indem Du von einigen der besten Black owned Restaurants in Berlin bestellst.`,
     find: 'Finde Restaurants',
     add: 'Füg dein Restaurant hinzu',
   },
   'en-GB': {
-    titleBlue: 'Support restaurants in Berlin during the lockdown by',
-    titlePink: 'getting take-out',
-    description: `Your local food joints are struggling during the current crisis — but they're still cooking! Help them keep the lights on, by getting take-out from the best restaurants in Berlin.`,
+    titleBlue: 'Discover the unique way food intertwines the cultures of people',
+    titlePink: 'in the African Diaspora',
+    description: `Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of the African Diaspora food culture. Show your support and solidarity, by ordering from some of the best Black owned restaurants in Berlin.`,
     find: 'Find restaurants',
     add: 'Add your restaurant',
   },

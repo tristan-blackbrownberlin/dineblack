@@ -21,7 +21,3 @@ Run `npm run dev` (or `yarn dev`) to start the development loop.
 ## Deployment
 
 This project is deployed with [Zeit Now](https://zeit.co/home), utilising [Now Secrets](https://zeit.co/docs/v2/build-step#using-environment-variables-and-secrets) (see now.json file), but could be deployed wherever.
-
-## Forked and Inspired by
-
-This project was forked and inspired by [Dine CPH](https://github.com/covid19-group/dinecph), which was built by [Sebastian Winther](https://github.com/sjwinther). Big shoutout!

@@ -22,7 +22,7 @@ export default () => {
             </a>
             {' '}{' '}
             {content.for}{' '}
-             Berlin
+             folx who love good times shared over a meal.
             {'. '}
           </p>
 

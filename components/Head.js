@@ -4,9 +4,9 @@ export default ({ children }) => {
   const title = 'The Diaspora Eats'
   const site_url = 'https://thediasporaeats.com'
   const fb_app_id = "571317996836972"
-  const author = "Black Brown Berlin"
+  const author = "The Diaspora Eats"
   const description =
-    "Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of the African Diaspora food culture. Show your support and solidarity, by ordering from some of the best Black owned restaurants in Berlin."
+    "Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of the African Diaspora food culture."
   return (
     <Head>
       <meta charset='utf-8' />
@@ -16,7 +16,7 @@ export default ({ children }) => {
       <link rel='apple-touch-icon' href='/apple-icon.png'></link>
       <meta name='theme-color' content='#ff8ba7' />
 
-      <link rel="icon" href="https://dineinberlin.com/favicon.png" />
+      <link rel="icon" href="https://thediasporaeats.com/public/assets/africa-continent-hero.jpg" />
       <title>{title}</title>
       <meta property="og:type" content="website" />
       <meta name="description" content={description} />
@@ -26,12 +26,12 @@ export default ({ children }) => {
       <meta property="og:site_name" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={site_url} />
-      <meta name="image" property="og:image" content="https://dineinberlin.com/og-image.png" />
+      <meta name="image" property="og:image" content="https://thediasporaeats.com/public/assets/africa-continent-hero.jpg" />
       <meta name="twitter:card" content="summary_large_image" />
       {/* <meta name="twitter:site" content="" /> */}
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="https://dineinberlin.com/og-image.png" />
+      <meta name="twitter:image" content="https://thediasporaeats.com/public/assets/africa-continent-hero.jpg" />
       {children}
     </Head>
   )

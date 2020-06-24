@@ -48,8 +48,8 @@ export default () => {
                 className="bear text-3xl sm:mr-3"
               >
               <img
-                src="/assets/dineinbear.svg"
-                alt="Dine In Bear"
+                src="/Africafavicon.png"
+                alt="Diaspora"
                 className="hidden md:block w-8 h-8"
               />
               </span>

@@ -20,8 +20,8 @@ export default () => {
             </h2>
             <p className="max-w-xl text-navy-light text-lg mb-4 whitespace-pre-line">
               {content.description}
-              <a href="https://blackbrownberlin.com" target="_blank" rel="noopener">
-                Black Brown Berlin
+              <a href="https://www.kendravalentine.com/" target="_blank" rel="noopener">
+                Find out more about Kendra  
               </a>
               .
             </p>

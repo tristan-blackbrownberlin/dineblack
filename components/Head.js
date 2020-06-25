@@ -3,7 +3,7 @@ import Head from 'next/head'
 export default ({ children }) => {
   const title = 'The Diaspora Eats'
   const site_url = 'https://thediasporaeats.com'
-  const fb_app_id = "571317996836972"
+  const fb_app_id = "638503730343380"
   const author = "The Diaspora Eats"
   const description =
     "Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of the African Diaspora food culture."

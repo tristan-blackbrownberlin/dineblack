@@ -64,9 +64,9 @@ const pageContent = {
     add: 'Füg dein Restaurant hinzu',
   },
   'en-GB': {
-    titleBlue: 'Discover the unique way food intertwines the cultures of people',
-    titlePink: 'in the African Diaspora',
-    description: `Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of the African Diaspora food culture.`,
+    titleBlue: 'Discover the unique way food intertwines the cultures of Europe',
+    titlePink: '& the African Diaspora',
+    description: `Food brings people together, connecting and transcending individuals, languages and cultures! Explore the culinary diversity of the African Diaspora food culture.`,
     find: 'Find restaurants',
     add: 'Add your restaurant',
   },

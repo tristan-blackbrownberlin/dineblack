@@ -67,7 +67,7 @@ const pageContent = {
     os: 'Möchtest du mithelfen oder hast du einen Fehler gefunden?',
   },
   'en-GB': {
-    createdby: 'Created by',
+    createdby: 'Adapted by',
     for: "for",
     inspired: 'Inspired by',
     built: 'Originally built by',

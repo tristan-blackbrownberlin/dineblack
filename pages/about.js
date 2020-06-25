@@ -54,21 +54,42 @@ const pageContent = {
   },
   'en-GB': {
     title: 'About',
-    description:  `The African diaspora refers to the many communities of people of African descent dispersed throughout the world as a result of historic movements.
+    description:  `Home.
+For some, it's a physical place.
+For others, its a state of mind, a feeling.
 
-    The African diaspora has a population of 140 million while Africa has a population of 1.2 billion.
+And yet for myself and countless others, it's a loaded concept that they grapple with and try to define and find all at once.
 
-    The most populated countries in the African diaspora include Brazil, Colombia, America, Dominican Republic, and Haiti.
+How is this idea of 'home' further compounded for not only a person but a 'black person' of the African Diaspora?
 
-    There is a connection among the descendants of slaves in the African Diaspora as their ancestors came from similar areas in Africa and survived a similar fate; slavery and colonization.
+Some of us moved to another country willingly to build a better life for our families. Far more of us were transported unwillingly and landed on distant shores- leaving much of our heritage behind.
+Yet, we all understand that nagging feeling of simultaneously belonging to a place and the persistent knowledge of not.
 
-    Essentially they were taken to different countries around the world, disconnected from one another and their homelands.
-    Cultures in the African diaspora strive to re-capture what was lost from their global scattering and colonization.
+So then what is 'home'?
 
-    Many who are accustomed to being regarded as simply black are adventuring for terminology that categorizes them as individuals who are members of a larger culture which does not simply reflect the colour of their skin.
-    For Africans in the Diaspora, decolonization involves reclaiming their African identity that was stolen from them and dispelling the negative views of Africa they have been socialized to hold under colonization, seeing Africa for its true beauty.
+Though definitions can vary, one doesn't fully understand the significance of home until you are away from it- whether it is your first time sleeping over at a friend's at five or moving across the globe at 25.
 
-    All cooked food indicates one thing, love of and for ones community.`,
+I know this first hand.
+
+There was no specific place for me to connect to this feeling of homesickness. I soon realized that 90% of the time, it manifested itself as an aching for the food I knew and loved.
+
+There was (and still is) no greater comfort to me than the fried catfish and collard greens, I instinctually know. They bring my heart & soul back to this familiar place.
+
+Those dishes might be Afro-American soul food, but as my global reach broadened, and knowledge of the Diaspora therein, I was able to find solace elsewhere as well…
+
+It came on the streets of London at the Notting Hill Carnival via a plate of Callaloo, greens scooped up and piled high on a paper plate by a kind-faced Jamaican woman that laughed when she saw my eyes light up as she handed it over. With each bite, I knew that moment was exactly where I was supposed to be.
+
+It came at a friend's home in Berlin, where I enjoyed a meal of traditional Nigerian food. I thought the cuisine was foreign to me until I tasted his stewed greens. He excused them as 'not being like his moms', but he tried to do it from memory. It might have been a simple version of Efo Riro, maybe not. Nonetheless, there's something to be said for muscle memory-because they tasted like home to me.
+
+And it was resurrected at 'home' in Stockholm when I discovered I could replace my beloved collard greens with Tuscan black kale and other greens to get tremendous results that warmed my heart and belly just as well.
+
+It is no coincidence that these greens cooked by fellow black folks felt just right to me. Despite varying so much in the specific ingredients, the same 'flavor' was still there- and by flavor, I don't mean seasonings. I mean something far more guttural, something that only the soul can recognize.
+
+So with that- I implore my brother & sisters of the Diaspora to embrace, explore, and support the food being prepared by our kin right here in our backyard.
+
+No matter your definition of home- I'm quite sure a comforted belly is part of it.
+
+Words by Kendra Valentine - Contributor, Story strategist, food nerd, and producer/presenter of the award-winning Americulinariska Youtube cooking series `,
     contact: 'Most inquiries and site feedback to ',
   },
 }

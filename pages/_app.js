@@ -25,4 +25,4 @@ function MyApp({ Component, pageProps }) {
 // }
 
 // pass your GA code as first argument
-export default withGA("UA-1137676-12", Router)(MyApp);
+export default withGA("UA-131282473-2", Router)(MyApp);

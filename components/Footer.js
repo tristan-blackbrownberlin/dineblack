@@ -38,6 +38,24 @@ export default () => {
               GitHub
             </a>
           </p>
+          <span>
+            <Link href="/privacypolicy">
+            <a
+            className="mt-4 underline"
+            >
+            {content.privacy}
+            </a>
+            </Link>
+          </span>
+          <span>
+            <Link href="/termsandconditions">
+            <a
+            className="mt-4 underline ml-6"
+            >
+            {content.terms}
+            </a>
+            </Link>
+          </span>
         </div>
         <div className="flex-shrink-0 relativ">
           <LanguageSelector />
@@ -65,6 +83,8 @@ const pageContent = {
     inspired: 'Inspiriert von ',
     built: 'Im Original von',
     os: 'Möchtest du mithelfen oder hast du einen Fehler gefunden?',
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions",
   },
   'en-GB': {
     createdby: 'Adapted by',
@@ -72,5 +92,7 @@ const pageContent = {
     inspired: 'Inspired by',
     built: 'Originally built by',
     os: "Want to contribute or found a bug?",
+    privacy: "Privacy Policy",
+    terms: "Terms & Conditions",
   },
 }

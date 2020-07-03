@@ -21,7 +21,7 @@ export default () => {
             <p className="max-w-xl text-navy-light text-lg mb-4 whitespace-pre-line">
               {content.description}
               <a href="https://www.kendravalentine.com/" target="_blank" rel="noopener">
-                Find out more about Kendra  
+                Find out more about Kendra
               </a>
               .
             </p>
@@ -89,7 +89,7 @@ So with that- I implore my brother & sisters of the Diaspora to embrace, explore
 
 No matter your definition of home- I'm quite sure a comforted belly is part of it.
 
-Words by Kendra Valentine - Contributor, Story strategist, food nerd, and producer/presenter of the award-winning Americulinariska Youtube cooking series `,
-    contact: 'Most inquiries and site feedback to ',
+Words by Kendra Valentine - Story strategist, food nerd, and producer/presenter of the award-winning Americulinariska Youtube cooking series `,
+    contact: 'We decided to kick off this exciting project in our home town of Berlin. We are very interested in expanding and providing this resource to other cities in Germany and Europe. Tell us more, inquiries and site feedback to ',
   },
 }

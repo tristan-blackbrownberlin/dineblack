@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import Promise from 'promise-polyfill'
 import fetch from 'isomorphic-unfetch'
+import Link from 'next/link'
 
 import { LanguageContext } from '../components/LanguageSelector'
 import Head from '../components/Head'
@@ -17,14 +18,15 @@ const pageContent = {
       Food: 'Essen',
       Wine: 'Wein',
       Drinks: 'Getränke',
-      Giftcards: 'Gutscheine',      
+      Giftcards: 'Gutscheine',
       Coffee: 'Kaffee',
       Pastries: 'Gebäck',
       Bread: 'Brot',
       Beer: 'Bier',
     },
     delivery: 'Lieferung',
-    orderLabel: 'Anschauen und Bestellen',
+    viewLabel: 'Mehr erfahren',
+    orderLabel: 'Bestellen',
   },
   'en-GB': {
     title: 'Restaurants',
@@ -35,14 +37,15 @@ const pageContent = {
       Food: 'Food',
       Wine: 'Wine',
       Drinks: 'Drinks',
-      Giftcards: 'Gift Cards',      
+      Giftcards: 'Gift Cards',
       Coffee: 'Coffee',
       Pastries: 'Pastries',
       Bread: 'Bread',
       Beer: 'Beer',
     },
     delivery: 'Delivery',
-    orderLabel: 'View and order',
+    viewLabel: 'More',
+    orderLabel: 'Order',
   },
 }
 
@@ -62,14 +65,27 @@ const ListItem = ({ restaurant, content }) => {
     <li key={id} className="w-full md:w-1/2 p-3">
       <div className="relative h-full flex flex-col items-start bg-white rounded-lg overflow-hidden p-4 sm:p-8 lg:px-12">
         <div className="flex-auto">
-          {name && <h3 className="text-xl sm:text-2xl mb-2">{name}</h3>}
-          {address && <p className="text-xs sm:text-sm mb-2">{address}<span className="inline-block font-medium text-xs sm:text-sm bg-teal px-2 py-1 m-1"> {neighbourhood} </span></p>}
-          
-          
+          {name && (
+            <Link href="/list/[restaurant]" as={`/list/${name}/`}>
+              <a>
+                <h3 className="text-xl sm:text-2xl mb-2">{name}</h3>
+              </a>
+            </Link>
+          )}
+          {address && (
+            <p className="text-xs sm:text-sm mb-2">
+              {address}
+              <span className="inline-block font-medium text-xs sm:text-sm bg-teal px-2 py-1 m-1">
+                {' '}
+                {neighbourhood}{' '}
+              </span>
+            </p>
+          )}
+
           <p className="text-sm mb-4">
-            {phone && <a href={"tel:" + phone}>{phone}</a> }
+            {phone && <a href={'tel:' + phone}>{phone}</a>}
             {phone && email && <span> | </span>}
-            {email && <a href={"mailto:" + email}>{email}</a> }
+            {email && <a href={'mailto:' + email}>{email}</a>}
           </p>
           {description && (
             <p className="max-w-xl text-sm sm:text-base mb-4">{description}</p>
@@ -87,16 +103,23 @@ const ListItem = ({ restaurant, content }) => {
             </ul>
           )}
         </div>
-        {url &&
-          <a
-            href={url.includes('http') ? url : 'https://' + url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary text-sm sm:text-base"
-          >
-            {content.orderLabel}&nbsp;&nbsp;&nbsp;⟶
-          </a>
-        }
+        <div className="flex-auto">
+          <Link href="/list/[restaurant]" as={`/list/${name}/`}>
+            <a className="btn btn-secondary text-sm sm:text-base mr-4">
+              {content.viewLabel}
+            </a>
+          </Link>
+          {url && (
+            <a
+              href={url.includes('http') ? url : 'https://' + url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary text-sm sm:text-base"
+            >
+              {content.orderLabel}&nbsp;&nbsp;&nbsp;⟶
+            </a>
+          )}
+        </div>
         {delivery && (
           <div className="sm:absolute top-0 right-0 font-medium text-sm sm:bg-teal sm:border-b border-sand sm:px-2 sm:py-1 mt-4 sm:m-2">
             ✓ Delivery available
@@ -112,22 +135,20 @@ class List extends React.Component {
     super(props)
     this.state = { restaurants: this.props.restaurants }
   }
-  
+
   componentDidMount() {
-    this.setState({restaurants: shuffle(this.state.restaurants)})
+    this.setState({ restaurants: shuffle(this.state.restaurants) })
   }
 
-  render () {
-    let restaurants =this.state.restaurants
+  render() {
+    let restaurants = this.state.restaurants
     return (
       <ul className="flex flex-wrap -m-3">
         {restaurants
           // Filter for necessary content
           .filter(
             restaurant =>
-              restaurant.name &&
-              restaurant.description &&
-              restaurant.url
+              restaurant.name && restaurant.description && restaurant.url
           )
           // Filter for delivery
           .filter(restaurant =>
@@ -143,11 +164,12 @@ class List extends React.Component {
           )
           // Filter for neighbourhoods
           .filter(restaurant => {
-            return this.props.filterNeighbourhoods && this.props.filterNeighbourhoods.length
-            ? this.props.filterNeighbourhoods.every(neighbourhood =>
-                restaurant.neighbourhood === neighbourhood
-              )
-            : true
+            return this.props.filterNeighbourhoods &&
+              this.props.filterNeighbourhoods.length
+              ? this.props.filterNeighbourhoods.every(
+                  neighbourhood => restaurant.neighbourhood === neighbourhood
+                )
+              : true
           })
           .map(restaurant => (
             <ListItem
@@ -165,7 +187,7 @@ export default ({ restaurants, neighbourhoods }) => {
   const content = pageContent[language]
 
   const [filterDelivery, setFilterDelivery] = useState(false)
-  const [filterSearch, setFilterSearch] = useState("")
+  const [filterSearch, setFilterSearch] = useState('')
   const [filterOffers, setFilterOffers] = useState([])
   const [filterNeighbourhoods, setFilterNeighbourhoods] = useState([])
 
@@ -181,7 +203,6 @@ export default ({ restaurants, neighbourhoods }) => {
                 {content.title}
               </h2>
               <div className="flex flex-wrap sm:flex-no-wrap items-end -m-1 mb-6">
-                
                 <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0">
                   <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0 justify-between">
                     <p className="w-full sm:w-auto font-medium m-1 mr-2">
@@ -198,7 +219,16 @@ export default ({ restaurants, neighbourhoods }) => {
                     </label>
                   </div>
                   <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0">
-                    {['Food', 'Wine', 'Drinks', 'Giftcards', 'Coffee', 'Pastries', 'Bread', 'Beer'].map(offer => {
+                    {[
+                      'Food',
+                      'Wine',
+                      'Drinks',
+                      'Giftcards',
+                      'Coffee',
+                      'Pastries',
+                      'Bread',
+                      'Beer',
+                    ].map(offer => {
                       const isChecked = filterOffers.includes(offer)
                       const handleChange = () => {
                         if (isChecked) {
@@ -241,14 +271,22 @@ export default ({ restaurants, neighbourhoods }) => {
                   </p>
                   <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0 md:max-w-3xl max-w-xl">
                     {neighbourhoods.map(neighbourhood => {
-                      const isChecked = filterNeighbourhoods.includes(neighbourhood)
+                      const isChecked = filterNeighbourhoods.includes(
+                        neighbourhood
+                      )
                       const handleChangeN = () => {
                         if (isChecked) {
                           const newNeighbourhoods = [...filterNeighbourhoods]
-                          newNeighbourhoods.splice(newNeighbourhoods.indexOf(neighbourhood), 1)
+                          newNeighbourhoods.splice(
+                            newNeighbourhoods.indexOf(neighbourhood),
+                            1
+                          )
                           setFilterNeighbourhoods(newNeighbourhoods)
                         } else {
-                          setFilterNeighbourhoods([...filterNeighbourhoods, neighbourhood])
+                          setFilterNeighbourhoods([
+                            ...filterNeighbourhoods,
+                            neighbourhood,
+                          ])
                         }
                       }
                       return (
@@ -274,7 +312,7 @@ export default ({ restaurants, neighbourhoods }) => {
                   </div>
                 </div>
               </div>
-              <List 
+              <List
                 restaurants={restaurants}
                 filterDelivery={filterDelivery}
                 filterOffers={filterOffers}
@@ -307,21 +345,34 @@ export async function getStaticProps() {
     .select({
       maxRecords: 999999, // don't want to paginate...
       view: 'Grid view', // NOTE: changing the view name will break things
-      fields: ['name', 'address', 'description', 'offerings', 'delivery', 'phone', 'url', 'neighbourhood', 'email'],
+      fields: [
+        'name',
+        'address',
+        'description',
+        'offerings',
+        'delivery',
+        'phone',
+        'url',
+        'neighbourhood',
+        'email',
+      ],
       filterByFormula: "display = '1'",
     })
     .all()
-  
-  const restaurants = await Promise.all(records.map(record => {
-    const info = record.fields
-    info.id = record.id
-    return info
-  }))
+
+  const restaurants = await Promise.all(
+    records.map(record => {
+      const info = record.fields
+      info.id = record.id
+      return info
+    })
+  )
 
   const neighbourhoods = Array.from(
     new Set(
-      restaurants.reduce( (hoods, restaurant) => {
-        if(restaurant.neighbourhood != undefined) hoods.push(restaurant.neighbourhood)
+      restaurants.reduce((hoods, restaurant) => {
+        if (restaurant.neighbourhood != undefined)
+          hoods.push(restaurant.neighbourhood)
         return hoods
       }, [])
     )
@@ -331,14 +382,12 @@ export async function getStaticProps() {
 }
 
 export function shuffle(arr) {
-  var i,
-        j,
-        temp;
-    for (i = arr.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-    return arr;  
+  var i, j, temp
+  for (i = arr.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1))
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  }
+  return arr
 }

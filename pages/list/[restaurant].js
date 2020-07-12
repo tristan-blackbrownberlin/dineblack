@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useRouter, Router } from 'next/router'
 import Link from 'next/link'
 import Head from '../../components/Head'
 import Nav from '../../components/Nav'
@@ -73,11 +73,13 @@ const Restaurant = () => {
         {!!restaurant && (
           <main className=" px-3 pt-8 pb-16">
             <div className="flex-auto w-full max-w-6xl mx-auto">
-              <Link href="/list">
-                <a className="btn btn-primary mb-8">
-                  ⟵&nbsp;&nbsp;&nbsp;{content.goBackLabel}
-                </a>
-              </Link>
+              <button
+                className="btn btn-primary mb-8"
+                onClick={() => router.back()}
+              >
+                ⟵&nbsp;&nbsp;&nbsp;{content.goBackLabel}
+              </button>
+
               <div className="w-full bg-white p-8 rounded-lg">
                 {restaurant.name && (
                   <h2 className="flex-auto font-extrabold text-2xl sm:text-3xl leading-none mb-4 sm:mb-6">

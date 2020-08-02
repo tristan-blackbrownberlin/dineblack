@@ -87,7 +87,6 @@ export async function getStaticProps({ params: { city } }) {
     })
     .all()
     .catch(e => {
-      console.log('an error occured', e)
       error = { error: e.error, message: e.message, statusCode: e.statusCode }
     })
 

@@ -8,56 +8,59 @@ import {
 } from '@react-google-maps/api'
 import { X } from 'react-feather'
 
-import LoadingSpinner from './LoadingSpinner'
-
-export default ({ restaurants }) => {
+export default ({ restaurants, city }) => {
   const [tooltip, setTooltip] = useState(false)
-  const [berlin] = useState({
-    lat: 52.5200,
-    lng: 13.4050,
-  })
+  const locationCenter = {
+    Restaurants: {
+      lat: 52.52,
+      lng: 13.405,
+    },
+    Hamburg: {
+      lat: 53.55,
+      lng: 9.99,
+    },
+  }
 
   // Reducing number of requests to Maps API
-  const restrictedGoogleMapsApiKey =process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
+  const restrictedGoogleMapsApiKey = process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
   //  process.env.NODE_ENV === 'production'
-    //  ? process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
-      //: undefined
+  //  ? process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
+  //: undefined
 
   // For local testing of Google Maps API
   // const restrictedGoogleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY
 
-
-  if (restaurants && !!restaurants.length)
-    return (
-      <LoadScriptNext googleMapsApiKey={restrictedGoogleMapsApiKey}>
-        <GoogleMap
-          center={berlin}
-          clickableIcons={false}
-          mapContainerClassName="border-t border-sand"
-          mapContainerStyle={{ height: 'calc( 100vh - 85px)' }}
-          zoom={13}
-        >
-          <Tooltip tooltip={tooltip} setTooltip={setTooltip} />
-          {restaurants.map(restaurant => {
-            const position = restaurant.location ? JSON.parse(restaurant.location) : false
-
-            if (position)
-              return (
-                <Marker
-                  key={restaurant.id}
-                  position={position}
-                  onClick={() => setTooltip(restaurant)}
-                />
-              )
-            return null
-          })}
-        </GoogleMap>
-      </LoadScriptNext>
-    )
   return (
-    <div className="w-full h-full flex items-center justify-center text-3xl text-pink">
-      <LoadingSpinner />
-    </div>
+    <LoadScriptNext googleMapsApiKey={restrictedGoogleMapsApiKey}>
+      <GoogleMap
+        center={locationCenter[city]}
+        clickableIcons={false}
+        mapContainerClassName="border-t border-sand"
+        mapContainerStyle={{ height: 'calc( 100vh - 85px)' }}
+        zoom={13}
+      >
+        {restaurants && !!restaurants.length && (
+          <>
+            <Tooltip tooltip={tooltip} setTooltip={setTooltip} />
+            {restaurants.map(restaurant => {
+              const position = restaurant.location
+                ? JSON.parse(restaurant.location)
+                : false
+
+              if (position)
+                return (
+                  <Marker
+                    key={restaurant.id}
+                    position={position}
+                    onClick={() => setTooltip(restaurant)}
+                  />
+                )
+              return null
+            })}
+          </>
+        )}
+      </GoogleMap>
+    </LoadScriptNext>
   )
 }
 
@@ -75,7 +78,6 @@ const Tooltip = ({ tooltip, setTooltip }) => {
   const email = tooltip.email || undefined
 
   const position = tooltip.location ? JSON.parse(tooltip.location) : false
-
   return (
     <AnimatePresence>
       {tooltip && position && (
@@ -116,9 +118,9 @@ const Tooltip = ({ tooltip, setTooltip }) => {
               )}
               {delivery && <div className="mb-3">✓ Delivery available</div>}
               <div className="mb-3">
-                {phone && <a href={"tel:" + phone}>{phone}</a> }
+                {phone && <a href={'tel:' + phone}>{phone}</a>}
                 {phone && email && <span> | </span>}
-                {email && <a href={"mailto:" + email}>{email}</a> }
+                {email && <a href={'mailto:' + email}>{email}</a>}
               </div>
               {url && (
                 <a

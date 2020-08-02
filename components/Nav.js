@@ -1,5 +1,6 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown, ChevronUp } from 'react-feather'
 
@@ -33,8 +34,78 @@ const content = {
 }
 
 export default () => {
+  const router = useRouter()
+  const query = router.query
+  const city = query.city
   const breakpoint = useBreakpoint()
   const { language } = useContext(LanguageContext)
+
+  const NavLink = ({ href, label }) => (
+    <Link href={href}>
+      <a className="font-medium mx-3">{label}</a>
+    </Link>
+  )
+
+  const Dropdown = ({ language }) => {
+    const [showDropdown, setShowDropdown] = useState(false)
+    return (
+      <>
+        {showDropdown && (
+          <div
+            onClick={() => setShowDropdown(false)}
+            className="fixed inset-0 z-10"
+          />
+        )}
+        <div className="flex flex-col mx-3">
+          <button
+            type="button"
+            onClick={() => setShowDropdown(!showDropdown)}
+            className="inline-flex items-center font-medium"
+          >
+            {content.restaurants[language].label}
+            <ChevronDown
+              style={{ transform: 'translateY(1px)' }}
+              className="text-navy-light ml-2"
+            />
+          </button>
+          <div className="relative">
+            <AnimatePresence>
+              {showDropdown && (
+                <motion.ul
+                  initial={{ opacity: 0, y: 0 }}
+                  animate={{ opacity: 1, y: 8 }}
+                  exit={{ opacity: 0, y: 0 }}
+                  className="absolute left-0 top-0 z-20 w-48 bg-sand-light border border-sand"
+                >
+                  <li className="w-full">
+                    <Link href={`/map/[city]`} as={`/map/${city}`}>
+                      <a className="group flex font-medium px-3 py-2 my-2">
+                        {content.restaurants[language].map}
+                        <span className="flex-auto text-right text-sand-light group-hover:text-navy-light transition-color duration-150 ease-in-out">
+                          ⟶
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li className="w-full">
+                    <Link href={`/list/[city]`} as={`/list/${city}`}>
+                      <a className="group flex font-medium px-3 py-2 my-2">
+                        {content.restaurants[language].list}
+                        <span className="flex-auto text-right text-sand-light group-hover:text-navy-light transition-color duration-150 ease-in-out">
+                          ⟶
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+                </motion.ul>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+      </>
+    )
+  }
+
   return (
     <nav className="px-3 py-6">
       <div className="max-w-6xl flex items-center mx-auto">
@@ -47,11 +118,11 @@ export default () => {
                 style={{ transform: 'rotate(15deg) translateY(-2px)' }}
                 className="bear text-3xl sm:mr-3"
               >
-              <img
-                src="/Africafavicon.png"
-                alt="Diaspora"
-                className="hidden md:block w-8 h-8"
-              />
+                <img
+                  src="/Africafavicon.png"
+                  alt="Diaspora"
+                  className="hidden md:block w-8 h-8"
+                />
               </span>
               <h2 className="hidden sm:inline-block text-2xl">
                 The Diaspora Eats
@@ -71,71 +142,5 @@ export default () => {
         </div>
       </div>
     </nav>
-  )
-}
-
-const NavLink = ({ href, label }) => (
-  <Link href={href}>
-    <a className="font-medium mx-3">{label}</a>
-  </Link>
-)
-
-const Dropdown = ({ language }) => {
-  const [showDropdown, setShowDropdown] = useState(false)
-  return (
-    <>
-      {showDropdown && (
-        <div
-          onClick={() => setShowDropdown(false)}
-          className="fixed inset-0 z-10"
-        />
-      )}
-      <div className="flex flex-col mx-3">
-        <button
-          type="button"
-          onClick={() => setShowDropdown(!showDropdown)}
-          className="inline-flex items-center font-medium"
-        >
-          {content.restaurants[language].label}
-          <ChevronDown
-            style={{ transform: 'translateY(1px)' }}
-            className="text-navy-light ml-2"
-          />
-        </button>
-        <div className="relative">
-          <AnimatePresence>
-            {showDropdown && (
-              <motion.ul
-                initial={{ opacity: 0, y: 0 }}
-                animate={{ opacity: 1, y: 8 }}
-                exit={{ opacity: 0, y: 0 }}
-                className="absolute left-0 top-0 z-20 w-48 bg-sand-light border border-sand"
-              >
-                <li className="w-full">
-                  <Link href="/map">
-                    <a className="group flex font-medium px-3 py-2 my-2">
-                      {content.restaurants[language].map}
-                      <span className="flex-auto text-right text-sand-light group-hover:text-navy-light transition-color duration-150 ease-in-out">
-                        ⟶
-                      </span>
-                    </a>
-                  </Link>
-                </li>
-                <li className="w-full">
-                  <Link href="/list">
-                    <a className="group flex font-medium px-3 py-2 my-2">
-                      {content.restaurants[language].list}
-                      <span className="flex-auto text-right text-sand-light group-hover:text-navy-light transition-color duration-150 ease-in-out">
-                        ⟶
-                      </span>
-                    </a>
-                  </Link>
-                </li>
-              </motion.ul>
-            )}
-          </AnimatePresence>
-        </div>
-      </div>
-    </>
   )
 }

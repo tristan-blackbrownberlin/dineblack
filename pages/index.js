@@ -24,7 +24,7 @@ export default () => {
                 {content.description}
               </p>
               <div className="pr-3 sm:pr-0 sm:-m-2">
-                <Link href="/map">
+                <Link href="/map/Berlin">
                   <a className="w-full sm:w-auto h-12 btn btn-primary inline-flex items-center mb-3 sm:m-2">
                     {content.find}
                     <span className="inline sm:hidden flex-auto text-right">
@@ -57,14 +57,16 @@ export default () => {
 
 const pageContent = {
   'de-DE': {
-    titleBlue: 'Entdecke die einzigartige Weise wie Essen Menschen und Kulturen',
+    titleBlue:
+      'Entdecke die einzigartige Weise wie Essen Menschen und Kulturen',
     titlePink: 'in der afrikanischen Diaspora verflechtet',
     description: `Essen bringt Menschen zusammen, verbindet uns und vereinigt Individuuen, Sprachen und Kulturen! Erforsche die diverse Welt der afrikanischen Diaspora -und Esskultur.`,
     find: 'Finde Restaurants',
     add: 'Füg dein Restaurant hinzu',
   },
   'en-GB': {
-    titleBlue: 'Discover the unique way food intertwines the cultures of Europe',
+    titleBlue:
+      'Discover the unique way food intertwines the cultures of Europe',
     titlePink: '& the African Diaspora',
     description: `Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of African Diasporic food.`,
     find: 'Find restaurants',

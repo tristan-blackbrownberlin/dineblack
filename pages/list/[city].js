@@ -210,7 +210,7 @@ export default ({ restaurants, neighbourhoods, error }) => {
               >
                 {city}
                 <span className="inline-block text-base ml-2 transform -translate-y-1">
-                  {showCityDropdown ? '▲' : '▼'}
+                  ▼
                 </span>
               </button>
             </h2>

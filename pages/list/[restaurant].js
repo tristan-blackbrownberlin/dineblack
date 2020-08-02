@@ -122,7 +122,11 @@ const Restaurant = () => {
                   )}
 
                   {restaurant.location && (
-                    <Map restaurants={[restaurant]} height="300px" />
+                    <Map
+                      restaurants={[restaurant]}
+                      height="350px"
+                      center={restaurant.location}
+                    />
                   )}
                 </div>
                 {restaurant.url && (

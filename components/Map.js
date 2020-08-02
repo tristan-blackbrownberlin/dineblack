@@ -11,12 +11,16 @@ import Link from 'next/link'
 
 import LoadingSpinner from './LoadingSpinner'
 
-export default ({ restaurants }) => {
+export default ({ restaurants, center, height }) => {
   const [tooltip, setTooltip] = useState(false)
-  const [berlin] = useState({
-    lat: 52.52,
-    lng: 13.405,
-  })
+  if (!center) {
+    const center = {
+      lat: 52.52,
+      lng: 13.405,
+    }
+  } else {
+    center = JSON.parse(center)
+  }
 
   // Reducing number of requests to Maps API
   const restrictedGoogleMapsApiKey = process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
@@ -31,10 +35,10 @@ export default ({ restaurants }) => {
     return (
       <LoadScriptNext googleMapsApiKey={restrictedGoogleMapsApiKey}>
         <GoogleMap
-          center={berlin}
+          center={center}
           clickableIcons={false}
           mapContainerClassName="border-t border-sand"
-          mapContainerStyle={{ height: 'calc( 100vh - 85px)' }}
+          mapContainerStyle={{ height: height }}
           zoom={13}
         >
           <Tooltip tooltip={tooltip} setTooltip={setTooltip} />

@@ -2,7 +2,8 @@ import Link from 'next/link'
 import citiesObj from '../constants/cities'
 
 export default ({ path }) => {
-  const cities = citiesObj.map(city => {
+  const cityNames = Object.values(citiesObj)
+  const cities = cityNames.map(({ name: city }) => {
     return (
       <li key={city}>
         <Link href={`/${path}/[city]`} as={`/${path}/${city}`}>

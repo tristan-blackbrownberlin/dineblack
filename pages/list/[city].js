@@ -431,7 +431,8 @@ export async function getStaticProps({ params: { city } }) {
 }
 
 export async function getStaticPaths() {
-  const paths = cities.map(city => ({ params: { city } }))
+  const citiesArr = Object.values(cities)
+  const paths = citiesArr.map(({ name: city }) => ({ params: { city } }))
   return {
     paths,
     fallback: false,

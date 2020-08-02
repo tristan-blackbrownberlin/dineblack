@@ -40,7 +40,7 @@ export default ({ restaurants, error }) => {
           <div className="px-3 mb-2">
             <CitySelection path="map" />
           </div>
-          {!error && <Map restaurants={restaurants} city={city} />}
+          {!error && <Map restaurants={restaurants} cityName={city} />}
           {!restaurants && !error && (
             <div className="w-full h-full flex items-center justify-center text-3xl text-pink">
               <LoadingSpinner />
@@ -62,7 +62,6 @@ export async function getStaticProps({ params: { city } }) {
   const airtableBaseKey = process.env.AIRTABLE_BASE_KEY
   let error = null
   let restaurants = null
-  let neighbourhoods = null
 
   const Airtable = require('airtable')
   const airtable = new Airtable({
@@ -104,7 +103,8 @@ export async function getStaticProps({ params: { city } }) {
 }
 
 export async function getStaticPaths() {
-  const paths = cities.map(city => ({ params: { city } }))
+  const citiesArr = Object.values(cities)
+  const paths = citiesArr.map(({ name: city }) => ({ params: { city } }))
   return {
     paths,
     fallback: false,

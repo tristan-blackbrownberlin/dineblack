@@ -7,19 +7,12 @@ import {
   OverlayView,
 } from '@react-google-maps/api'
 import { X } from 'react-feather'
+import cities from '../constants/cities.json'
 
-export default ({ restaurants, city }) => {
+export default ({ restaurants, cityName }) => {
   const [tooltip, setTooltip] = useState(false)
-  const locationCenter = {
-    Restaurants: {
-      lat: 52.52,
-      lng: 13.405,
-    },
-    Hamburg: {
-      lat: 53.55,
-      lng: 9.99,
-    },
-  }
+  const currentCity = cities.filter(city => city.name === cityName)
+  const center = currentCity[0].location
 
   // Reducing number of requests to Maps API
   const restrictedGoogleMapsApiKey = process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
@@ -33,7 +26,7 @@ export default ({ restaurants, city }) => {
   return (
     <LoadScriptNext googleMapsApiKey={restrictedGoogleMapsApiKey}>
       <GoogleMap
-        center={locationCenter[city]}
+        center={center}
         clickableIcons={false}
         mapContainerClassName="border-t border-sand"
         mapContainerStyle={{ height: 'calc( 100vh - 85px)' }}

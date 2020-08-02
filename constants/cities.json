@@ -1,1 +1,30 @@
-["Berlin", "Restaurants", "Hamburg", "test"]
+[
+  {
+    "name": "Berlin",
+    "location": {
+      "lat": 52.52,
+      "lng": 13.405
+    }
+  },
+  {
+    "name": "Restaurants",
+    "location": {
+      "lat": 52.52,
+      "lng": 13.405
+    }
+  },
+  {
+    "name": "Hamburg",
+    "location": {
+      "lat": 53.55,
+      "lng": 9.999
+    }
+  },
+  {
+    "name": "test",
+    "location": {
+      "lat": null,
+      "lng": null
+    }
+  }
+]

@@ -36,7 +36,7 @@ const content = {
 export default () => {
   const router = useRouter()
   const query = router.query
-  const city = query.city
+  const city = query.city || 'Berlin'
   const breakpoint = useBreakpoint()
   const { language } = useContext(LanguageContext)
 

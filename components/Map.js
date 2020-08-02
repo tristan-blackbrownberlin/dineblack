@@ -12,16 +12,17 @@ import Link from 'next/link'
 import LoadingSpinner from './LoadingSpinner'
 
 export default ({ restaurants, center, height }) => {
+  console.log('map:', restaurants, center, height)
   const [tooltip, setTooltip] = useState(false)
-  if (!center) {
-    const center = {
-      lat: 52.52,
-      lng: 13.405,
-    }
-  } else {
-    center = JSON.parse(center)
-  }
 
+  center = center
+    ? JSON.parse(center)
+    : {
+        lat: 52.52,
+        lng: 13.405,
+      }
+
+  height = height ? height : 'calc( 100vh - 85px)'
   // Reducing number of requests to Maps API
   const restrictedGoogleMapsApiKey = process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
   //  process.env.NODE_ENV === 'production'

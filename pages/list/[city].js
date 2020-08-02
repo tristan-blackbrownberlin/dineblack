@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import Promise from 'promise-polyfill'
 import fetch from 'isomorphic-unfetch'
@@ -7,6 +7,7 @@ import cities from '../../constants/cities.json'
 import { LanguageContext } from '../../components/LanguageSelector'
 import Head from '../../components/Head'
 import Nav from '../../components/Nav'
+import CityDropdown from '../../components/CityDropdown'
 import Footer from '../../components/Footer'
 import LoadingSpinner from '../../components/LoadingSpinner'
 
@@ -189,141 +190,163 @@ export default ({ restaurants, neighbourhoods, error }) => {
   const [filterSearch, setFilterSearch] = useState('')
   const [filterOffers, setFilterOffers] = useState([])
   const [filterNeighbourhoods, setFilterNeighbourhoods] = useState([])
+  const [showCityDropdown, setShowCityDropdown] = useState(false)
 
   const errorMessage = error ? content.errorMessages[error.error] : null
-  useEffect(() => {
-    console.log('here')
-  }, [])
+  const cityDropdownRef = useRef(null)
+
   return (
     <>
       <Head />
       <div className="min-h-screen flex flex-col">
         <Nav />
         <main className="flex-auto px-3 pt-8 sm:pt-16 pb-16">
-          {restaurants && restaurants.length > 0 && (
-            <div className="max-w-6xl mx-auto">
-              <h2 className="flex-auto font-extrabold text-2xl sm:text-3xl leading-none mb-4 sm:mb-6">
-                {content.title}
-              </h2>
-              <div className="flex flex-wrap sm:flex-no-wrap items-end -m-1 mb-6">
-                <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0">
-                  <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0 justify-between">
-                    <p className="w-full sm:w-auto font-medium m-1 mr-2">
-                      {content.offersLabel}
-                    </p>
-                    <label className="flex-shrink-0 inline-flex items-center font-medium cursor-pointer m-1">
-                      <input
-                        type="checkbox"
-                        checked={filterDelivery}
-                        onChange={() => setFilterDelivery(!filterDelivery)}
-                        className="form-checkbox mr-2"
-                      />
-                      <span className="select-none">{content.delivery}</span>
-                    </label>
-                  </div>
-                  <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0">
-                    {[
-                      'Food',
-                      'Wine',
-                      'Drinks',
-                      'Giftcards',
-                      'Coffee',
-                      'Pastries',
-                      'Bread',
-                      'Beer',
-                    ].map(offer => {
-                      const isChecked = filterOffers.includes(offer)
-                      const handleChange = () => {
-                        if (isChecked) {
-                          const newOffers = [...filterOffers]
-                          newOffers.splice(newOffers.indexOf(offer), 1)
-                          setFilterOffers(newOffers)
-                        } else {
-                          setFilterOffers([...filterOffers, offer])
-                        }
-                      }
-                      return (
-                        <label
-                          key={offer}
-                          className={
-                            'inline-block font-medium border-2 border-navy cursor-pointer px-2 py-1 m-1' +
-                            (isChecked
-                              ? ' text-sand-light bg-navy'
-                              : ' text-navy')
-                          }
-                        >
-                          <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={handleChange}
-                            className="sr-only"
-                          />
-                          <span className="select-none">
-                            {content.offers[offer]}
-                          </span>
-                        </label>
-                      )
-                    })}
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-wrap sm:flex-no-wrap items-end -m-1 mb-6">
-                <div className="w-full items-center mb-4 sm:mb-0">
-                  <p className="w-full sm:w-auto font-medium m-1 mr-2">
-                    {content.neighbourhoodLabel}
-                  </p>
-                  <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0 md:max-w-3xl max-w-xl">
-                    {neighbourhoods.map(neighbourhood => {
-                      const isChecked = filterNeighbourhoods.includes(
-                        neighbourhood
-                      )
-                      const handleChangeN = () => {
-                        if (isChecked) {
-                          const newNeighbourhoods = [...filterNeighbourhoods]
-                          newNeighbourhoods.splice(
-                            newNeighbourhoods.indexOf(neighbourhood),
-                            1
-                          )
-                          setFilterNeighbourhoods(newNeighbourhoods)
-                        } else {
-                          setFilterNeighbourhoods([
-                            ...filterNeighbourhoods,
-                            neighbourhood,
-                          ])
-                        }
-                      }
-                      return (
-                        <label
-                          key={neighbourhood}
-                          className={
-                            'inline-block font-small border-2 border-navy cursor-pointer px-2 py-1 m-1' +
-                            (isChecked
-                              ? ' text-sand-light bg-navy'
-                              : ' text-navy')
-                          }
-                        >
-                          <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={handleChangeN}
-                            className="sr-only"
-                          />
-                          <span className="select-none">{neighbourhood}</span>
-                        </label>
-                      )
-                    })}
-                  </div>
-                </div>
-              </div>
-              <List
-                restaurants={restaurants}
-                filterDelivery={filterDelivery}
-                filterOffers={filterOffers}
-                filterNeighbourhoods={filterNeighbourhoods}
-                content={content}
-              />
+          <div className="max-w-6xl mx-auto">
+            <h2 className="inline-block font-extrabold text-2xl sm:text-3xl leading-none mb-4 sm:mb-6">
+              {content.title} in{' '}
+              <button
+                className="uppercase underline"
+                onClick={() => setShowCityDropdown(!showCityDropdown)}
+              >
+                {city}
+                <span className="inline-block text-base ml-2 transform -translate-y-1">
+                  {showCityDropdown ? '▲' : '▼'}
+                </span>
+              </button>
+            </h2>
+            <div
+              ref={cityDropdownRef}
+              style={
+                showCityDropdown
+                  ? { height: `${cityDropdownRef.current.scrollHeight}px` }
+                  : { height: '0px' }
+              }
+              className="transform overflow-hidden transition-all duration-200"
+            >
+              <CityDropdown path="list" />
             </div>
-          )}
+            {restaurants && restaurants.length > 0 && (
+              <>
+                <div className="flex flex-wrap sm:flex-no-wrap items-end -m-1 mb-6">
+                  <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0">
+                    <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0 justify-between">
+                      <p className="w-full sm:w-auto font-medium m-1 mr-2">
+                        {content.offersLabel}
+                      </p>
+                      <label className="flex-shrink-0 inline-flex items-center font-medium cursor-pointer m-1">
+                        <input
+                          type="checkbox"
+                          checked={filterDelivery}
+                          onChange={() => setFilterDelivery(!filterDelivery)}
+                          className="form-checkbox mr-2"
+                        />
+                        <span className="select-none">{content.delivery}</span>
+                      </label>
+                    </div>
+                    <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0">
+                      {[
+                        'Food',
+                        'Wine',
+                        'Drinks',
+                        'Giftcards',
+                        'Coffee',
+                        'Pastries',
+                        'Bread',
+                        'Beer',
+                      ].map(offer => {
+                        const isChecked = filterOffers.includes(offer)
+                        const handleChange = () => {
+                          if (isChecked) {
+                            const newOffers = [...filterOffers]
+                            newOffers.splice(newOffers.indexOf(offer), 1)
+                            setFilterOffers(newOffers)
+                          } else {
+                            setFilterOffers([...filterOffers, offer])
+                          }
+                        }
+                        return (
+                          <label
+                            key={offer}
+                            className={
+                              'inline-block font-medium border-2 border-navy cursor-pointer px-2 py-1 m-1' +
+                              (isChecked
+                                ? ' text-sand-light bg-navy'
+                                : ' text-navy')
+                            }
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={handleChange}
+                              className="sr-only"
+                            />
+                            <span className="select-none">
+                              {content.offers[offer]}
+                            </span>
+                          </label>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-wrap sm:flex-no-wrap items-end -m-1 mb-6">
+                  <div className="w-full items-center mb-4 sm:mb-0">
+                    <p className="w-full sm:w-auto font-medium m-1 mr-2">
+                      {content.neighbourhoodLabel}
+                    </p>
+                    <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0 md:max-w-3xl max-w-xl">
+                      {neighbourhoods.map(neighbourhood => {
+                        const isChecked = filterNeighbourhoods.includes(
+                          neighbourhood
+                        )
+                        const handleChangeN = () => {
+                          if (isChecked) {
+                            const newNeighbourhoods = [...filterNeighbourhoods]
+                            newNeighbourhoods.splice(
+                              newNeighbourhoods.indexOf(neighbourhood),
+                              1
+                            )
+                            setFilterNeighbourhoods(newNeighbourhoods)
+                          } else {
+                            setFilterNeighbourhoods([
+                              ...filterNeighbourhoods,
+                              neighbourhood,
+                            ])
+                          }
+                        }
+                        return (
+                          <label
+                            key={neighbourhood}
+                            className={
+                              'inline-block font-small border-2 border-navy cursor-pointer px-2 py-1 m-1' +
+                              (isChecked
+                                ? ' text-sand-light bg-navy'
+                                : ' text-navy')
+                            }
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={handleChangeN}
+                              className="sr-only"
+                            />
+                            <span className="select-none">{neighbourhood}</span>
+                          </label>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+                <List
+                  restaurants={restaurants}
+                  filterDelivery={filterDelivery}
+                  filterOffers={filterOffers}
+                  filterNeighbourhoods={filterNeighbourhoods}
+                  content={content}
+                />
+              </>
+            )}
+          </div>
           {!restaurants && !error && (
             <div className="w-full h-full flex items-center justify-center text-3xl text-pink">
               <LoadingSpinner />
@@ -395,11 +418,13 @@ export async function getStaticProps({ params: { city } }) {
     )
   }
 
-  if (!restaurants && !error) {
-    error = {
-      error: 'EMPTY',
-      message: 'restaurants is empty',
-      statusCode: null,
+  if (!error) {
+    if (!restaurants.length) {
+      error = {
+        error: 'EMPTY',
+        message: 'restaurants is empty',
+        statusCode: null,
+      }
     }
   }
   return { props: { restaurants, neighbourhoods, error } }

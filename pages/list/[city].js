@@ -7,7 +7,7 @@ import cities from '../../constants/cities.json'
 import { LanguageContext } from '../../components/LanguageSelector'
 import Head from '../../components/Head'
 import Nav from '../../components/Nav'
-import CityDropdown from '../../components/CityDropdown'
+import CitySelection from '../../components/CitySelection'
 import Footer from '../../components/Footer'
 import LoadingSpinner from '../../components/LoadingSpinner'
 
@@ -221,9 +221,9 @@ export default ({ restaurants, neighbourhoods, error }) => {
                   ? { height: `${cityDropdownRef.current.scrollHeight}px` }
                   : { height: '0px' }
               }
-              className="transform overflow-hidden transition-all duration-200"
+              className="transform overflow-hidden transition-all duration-200 mb-8"
             >
-              <CityDropdown path="list" />
+              <CitySelection path="list" />
             </div>
             {restaurants && restaurants.length > 0 && (
               <>

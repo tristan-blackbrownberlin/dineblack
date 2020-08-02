@@ -5,7 +5,7 @@ export default ({ path }) => {
   const cities = citiesObj.map(city => {
     return (
       <li key={city}>
-        <Link href="/list/[city]" as={`/${path}/${city}`}>
+        <Link href={`/${path}/[city]`} as={`/${path}/${city}`}>
           <a className="group flex font-medium mr-8 my-2">
             {city}
             <span className="flex-auto text-right text-sand-light group-hover:text-navy-light transition-color duration-150 ease-in-out">
@@ -18,7 +18,7 @@ export default ({ path }) => {
   })
 
   return (
-    <div className="w-full mb-8">
+    <div className="w-full">
       <ul className="flex flex-initial flex-wrap">{cities}</ul>
     </div>
   )

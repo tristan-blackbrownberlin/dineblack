@@ -18,7 +18,7 @@ export default () => {
              target="_blank"
              rel="noopener"
             >
-              Black Brown Berlin
+            Proud Patnership with Black Brown Berlin
             </a>
             {' '}{' '}
             {content.for}{' '}
@@ -60,7 +60,7 @@ export default () => {
         <div className="flex-shrink-0 relativ">
           <LanguageSelector />
           <div className="text-left md:text-right mt-4">
-            <a href="https://www.instagram.com/blackbrownberlin/" target="_blank" rel="noopener">
+            <a href="https://www.instagram.com/thediasporaeats/" target="_blank" rel="noopener">
               <img src="/assets/instagram.svg" alt="Instagram" width="24"/>
             </a>
           </div>
@@ -78,7 +78,7 @@ const NavLink = ({ href, label }) => (
 
 const pageContent = {
   'de-DE': {
-    createdby: 'Umgesetzt von',
+    createdby: 'stolze Partnerschaft mit',
     for: "für",
     inspired: 'Inspiriert von ',
     built: 'Im Original von',
@@ -87,7 +87,7 @@ const pageContent = {
     terms: "Terms & Conditions",
   },
   'en-GB': {
-    createdby: 'Adapted by',
+    createdby: 'Proud Partnership with',
     for: "for",
     inspired: 'Inspired by',
     built: 'Originally built by',

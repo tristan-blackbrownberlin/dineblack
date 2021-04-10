@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 8080",
+    "dev:inspect": "NODE_OPTIONS='--inspect' next dev -p 8080",
     "build": "next build",
     "start": "next start"
   },
@@ -12,7 +13,6 @@
     "@react-google-maps/api": "^1.9.7",
     "@svgr/webpack": "^4.3.3",
     "@tailwindcss/custom-forms": "^0.2.1",
-    "@tryghost/content-api": "^1.4.4",
     "airtable": "^0.8.1",
     "cssnano": "^4.1.10",
     "dotenv": "^8.2.0",

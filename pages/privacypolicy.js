@@ -5,7 +5,7 @@ import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
-export default () => {
+const PrivacyPolicy = () => {
   const { language } = useContext(LanguageContext)
   const content = pageContent[language]
   return (
@@ -50,7 +50,7 @@ const pageContent = {
   },
   'en-GB': {
     title: 'Privacy Policy',
-    description:  `
+    description: `
 Your privacy is important to us. It is the diaspora eats' policy to respect your privacy regarding any information we may collect from you across our website, http://thediasaporaeats.com, and other sites we own and operate.
 
 We only ask for personal information when we truly need it to provide a service to you. We collect it by fair and lawful means, with your knowledge and consent. We also let you know why we’re collecting it and how it will be used.
@@ -68,3 +68,5 @@ Your continued use of our website will be regarded as acceptance of our practice
 This policy is effective as of 1 May 2020.`,
   },
 }
+
+export default PrivacyPolicy

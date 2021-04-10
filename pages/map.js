@@ -5,7 +5,7 @@ import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Map from '../components/Map'
 
-export default ({ restaurants }) => {
+const MapPage = ({ restaurants }) => {
   return (
     <>
       <Head />
@@ -37,18 +37,30 @@ export async function getStaticProps() {
     .select({
       maxRecords: 999999, // don't want to paginate...
       view: 'Grid view', // NOTE: changing the view name will break things
-      fields: ['name', 'address', 'description', 'offerings', 'delivery', 'phone', 'url', 'neighbourhood', 'email', 'location'],
+      fields: [
+        'name',
+        'address',
+        'description',
+        'offerings',
+        'delivery',
+        'phone',
+        'url',
+        'neighbourhood',
+        'email',
+        'location',
+      ],
       filterByFormula: "display = '1'",
     })
     .all()
-  const restaurants = await Promise.all(records.map(record => {
-    const info = record.fields
-    info.id = record.id
-    return info
-  }
-  ))
-  
-  // Dont need this anymore as locaation encoding happens in Airtable but 
+  const restaurants = await Promise.all(
+    records.map(record => {
+      const info = record.fields
+      info.id = record.id
+      return info
+    })
+  )
+
+  // Dont need this anymore as locaation encoding happens in Airtable but
   // keeping for future reference and could build to do geolcation and store in Airtable here
 
   // if(process.env.NODE_ENV === 'production') {
@@ -70,6 +82,8 @@ export async function getStaticProps() {
   //     })
   //   }
   // }
-  
+
   return { props: { restaurants } }
 }
+
+export default MapPage

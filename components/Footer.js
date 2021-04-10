@@ -18,7 +18,7 @@ export default () => {
              target="_blank"
              rel="noopener"
             >
-            Proud Patnership with Black Brown Berlin
+            Black Brown Berlin
             </a>
             {' '}{' '}
             {content.for}{' '}

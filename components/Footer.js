@@ -18,26 +18,20 @@ export default () => {
              target="_blank"
              rel="noopener"
             >
-            Proud Patnership with Black Brown Berlin
+            Black Brown Berlin
             </a>
-            {' '}{' '}
-            {content.for}{' '}
+            {` & `}
+            <a
+             href="https://1305.digitial"
+             target="_blank"
+             rel="noopener"
+            >
+            1305.digital
+            </a>
+            {' '}{content.for}{' '}
              folx who love good times shared over a meal.
-            {'. '}
           </p>
 
-          <p>
-            {content.os}
-            {' ⟶ '}
-            <a
-              className="ml-1"
-              href="https://github.com/tristan-blackbrownberlin/dineblack"
-              target="_blank"
-              rel="noopener"
-            >
-              GitHub
-            </a>
-          </p>
           <span>
             <Link href="/privacypolicy">
             <a
@@ -55,6 +49,16 @@ export default () => {
             {content.terms}
             </a>
             </Link>
+          </span>
+          <span>
+            <a
+              className="mt-4 underline ml-6"
+              href="https://github.com/tristan-blackbrownberlin/dineblack"
+              target="_blank"
+              rel="noopener"
+            >
+              GitHub
+            </a>
           </span>
         </div>
         <div className="flex-shrink-0 relativ">
@@ -82,7 +86,6 @@ const pageContent = {
     for: "für",
     inspired: 'Inspiriert von ',
     built: 'Im Original von',
-    os: 'Möchtest du mithelfen oder hast du einen Fehler gefunden?',
     privacy: "Privacy Policy",
     terms: "Terms & Conditions",
   },
@@ -91,7 +94,6 @@ const pageContent = {
     for: "for",
     inspired: 'Inspired by',
     built: 'Originally built by',
-    os: "Want to contribute or found a bug?",
     privacy: "Privacy Policy",
     terms: "Terms & Conditions",
   },

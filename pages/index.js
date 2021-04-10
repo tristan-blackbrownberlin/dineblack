@@ -57,14 +57,16 @@ export default () => {
 
 const pageContent = {
   'de-DE': {
-    titleBlue: 'Entdecke die einzigartige Weise wie Essen Menschen und Kulturen',
+    titleBlue:
+      'Entdecke die einzigartige Weise wie Essen Menschen und Kulturen',
     titlePink: 'der afrikanischen Diaspora verflechtet',
     description: `Essen bringt Menschen zusammen, verbindet uns und vereinigt Individuuen, Sprachen und Kulturen! Erforsche die diverse Welt der afrikanischen Diaspora -und Esskultur.`,
     find: 'Finde Restaurants',
     add: 'Füg dein Restaurant hinzu',
   },
   'en-GB': {
-    titleBlue: 'Discover the unique way food intertwines the cultures of',
+    titleBlue:
+      'Discover the unique way food intertwines the cultures of Berlin & ',
     titlePink: 'the African Diaspora',
     description: `Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of African Diasporic food.`,
     find: 'Find restaurants',

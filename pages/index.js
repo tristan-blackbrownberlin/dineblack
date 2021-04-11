@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { LanguageContext } from '../components/LanguageSelector'
@@ -5,7 +6,7 @@ import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
-export default () => {
+const Home = () => {
   const { language } = useContext(LanguageContext)
   const content = pageContent[language]
   return (
@@ -57,7 +58,8 @@ export default () => {
 
 const pageContent = {
   'de-DE': {
-    titleBlue: 'Entdecke die einzigartige Weise wie Essen Menschen und Kulturen',
+    titleBlue:
+      'Entdecke die einzigartige Weise wie Essen Menschen und Kulturen',
     titlePink: 'der afrikanischen Diaspora verflechtet',
     description: `Essen bringt Menschen zusammen, verbindet uns und vereinigt Individuuen, Sprachen und Kulturen! Erforsche die diverse Welt der afrikanischen Diaspora -und Esskultur.`,
     find: 'Finde Restaurants',
@@ -71,3 +73,5 @@ const pageContent = {
     add: 'Add your restaurant',
   },
 }
+
+export default Home

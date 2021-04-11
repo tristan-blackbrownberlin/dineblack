@@ -1,10 +1,11 @@
+import React from 'react'
 import Link from 'next/link'
 
 import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
-export default () => (
+const Submit = () => (
   <>
     <Head>
       <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
@@ -26,3 +27,5 @@ export default () => (
     </div>
   </>
 )
+
+export default Submit

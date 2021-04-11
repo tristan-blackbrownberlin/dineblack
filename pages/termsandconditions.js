@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { LanguageContext } from '../components/LanguageSelector'
@@ -5,7 +6,7 @@ import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
-export default () => {
+const Terms = () => {
   const { language } = useContext(LanguageContext)
   const content = pageContent[language]
   return (
@@ -131,7 +132,7 @@ As long as the website and the information and services on the website are provi
   },
   'en-GB': {
     title: 'Terms and Conditions',
-    description:  `
+    description: `
     Terms and Conditions
     Welcome to https://thediasporaeats.com/!
 
@@ -230,3 +231,5 @@ As long as the website and the information and services on the website are provi
     As long as the website and the information and services on the website are provided free of charge, we will not be liable for any loss or damage of any nature.`,
   },
 }
+
+export default Terms

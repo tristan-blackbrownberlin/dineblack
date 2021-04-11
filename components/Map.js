@@ -1,3 +1,4 @@
+import React from 'react'
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -10,22 +11,21 @@ import { X } from 'react-feather'
 
 import LoadingSpinner from './LoadingSpinner'
 
-export default ({ restaurants }) => {
+const Map = ({ restaurants }) => {
   const [tooltip, setTooltip] = useState(false)
   const [berlin] = useState({
-    lat: 52.5200,
-    lng: 13.4050,
+    lat: 52.52,
+    lng: 13.405,
   })
 
   // Reducing number of requests to Maps API
-  const restrictedGoogleMapsApiKey =process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
+  const restrictedGoogleMapsApiKey = process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
   //  process.env.NODE_ENV === 'production'
-    //  ? process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
-      //: undefined
+  //  ? process.env.RESTRICTED_GOOGLE_MAPS_API_KEY
+  //: undefined
 
   // For local testing of Google Maps API
   // const restrictedGoogleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY
-
 
   if (restaurants && !!restaurants.length)
     return (
@@ -39,7 +39,9 @@ export default ({ restaurants }) => {
         >
           <Tooltip tooltip={tooltip} setTooltip={setTooltip} />
           {restaurants.map(restaurant => {
-            const position = restaurant.location ? JSON.parse(restaurant.location) : false
+            const position = restaurant.location
+              ? JSON.parse(restaurant.location)
+              : false
 
             if (position)
               return (
@@ -116,9 +118,9 @@ const Tooltip = ({ tooltip, setTooltip }) => {
               )}
               {delivery && <div className="mb-3">✓ Delivery available</div>}
               <div className="mb-3">
-                {phone && <a href={"tel:" + phone}>{phone}</a> }
+                {phone && <a href={'tel:' + phone}>{phone}</a>}
                 {phone && email && <span> | </span>}
-                {email && <a href={"mailto:" + email}>{email}</a> }
+                {email && <a href={'mailto:' + email}>{email}</a>}
               </div>
               {url && (
                 <a
@@ -144,3 +146,5 @@ const Tooltip = ({ tooltip, setTooltip }) => {
     </AnimatePresence>
   )
 }
+
+export default Map

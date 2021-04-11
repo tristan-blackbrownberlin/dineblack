@@ -1,6 +1,7 @@
+import React from 'react'
 // import App from 'next/app'
-import Router from "next/router";
-import withGA from "next-ga";
+import Router from 'next/router'
+import withGA from 'next-ga'
 import '../css/base.css'
 import { LanguageProvider } from '../components/LanguageSelector'
 
@@ -25,4 +26,4 @@ function MyApp({ Component, pageProps }) {
 // }
 
 // pass your GA code as first argument
-export default withGA("UA-131282473-2", Router)(MyApp);
+export default withGA('UA-131282473-2', Router)(MyApp)

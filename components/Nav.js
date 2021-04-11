@@ -1,3 +1,4 @@
+import React from 'react'
 import { useContext, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -32,7 +33,7 @@ const content = {
   },
 }
 
-export default () => {
+const Nav = () => {
   const breakpoint = useBreakpoint()
   const { language } = useContext(LanguageContext)
   return (
@@ -47,11 +48,11 @@ export default () => {
                 style={{ transform: 'rotate(15deg) translateY(-2px)' }}
                 className="bear text-3xl sm:mr-3"
               >
-              <img
-                src="/Africafavicon.png"
-                alt="Diaspora"
-                className="hidden md:block w-8 h-8"
-              />
+                <img
+                  src="/Africafavicon.png"
+                  alt="Diaspora"
+                  className="hidden md:block w-8 h-8"
+                />
               </span>
               <h2 className="hidden sm:inline-block text-2xl">
                 The Diaspora Eats
@@ -139,3 +140,5 @@ const Dropdown = ({ language }) => {
     </>
   )
 }
+
+export default Nav

@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 import { useContext } from 'react'
 import { LanguageContext } from '../components/LanguageSelector'
@@ -5,7 +6,7 @@ import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 
-export default () => {
+const About = () => {
   const { language } = useContext(LanguageContext)
   const content = pageContent[language]
   return (
@@ -20,15 +21,21 @@ export default () => {
             </h2>
             <p className="max-w-xl text-navy-light text-lg mb-4 whitespace-pre-line">
               {content.description}
-              <a href="https://www.instagram.com/misskendrav/" target="_blank" rel="noopener">
+              <a
+                href="https://www.instagram.com/misskendrav/"
+                target="_blank"
+                rel="noopener"
+              >
                 Find out more about Kendra
               </a>
               .
             </p>
             <p className="max-w-xl text-navy-light text-lg mb-4">
               {content.contact}
-              <a href="mailto:hello@blackbrownberlin.com">hello@blackbrownberlin.com</a>.
-              .
+              <a href="mailto:hello@blackbrownberlin.com">
+                hello@blackbrownberlin.com
+              </a>
+              . .
             </p>
           </div>
         </main>
@@ -54,7 +61,7 @@ const pageContent = {
   },
   'en-GB': {
     title: 'About',
-    description:  `Home.
+    description: `Home.
 For some, it's a physical place.
 For others, its a state of mind, a feeling.
 
@@ -90,6 +97,8 @@ So with that- I implore my brother & sisters of the Diaspora to embrace, explore
 No matter your definition of home- I'm quite sure a comforted belly is part of it.
 
 Words by Kendra Valentine - Story strategist, food nerd, and producer/presenter of the award-winning Americulinariska Youtube cooking series `,
-    contact: 'We decided to kick off this exciting project in our home town of Berlin. We are very interested in expanding and providing this resource to other cities in Germany and Europe. Tell us more, inquiries and site feedback to ',
+    contact:
+      'We decided to kick off this exciting project in our home town of Berlin. We are very interested in expanding and providing this resource to other cities in Germany and Europe. Tell us more, inquiries and site feedback to ',
   },
 }
+export default About

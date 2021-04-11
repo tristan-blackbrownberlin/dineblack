@@ -6,6 +6,7 @@ import { LanguageContext } from '../components/LanguageSelector'
 import Head from '../components/Head'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
+import LoadingSpinner from '../components/LoadingSpinner'
 
 const pageContent = {
   'de-DE': {
@@ -13,16 +14,6 @@ const pageContent = {
     offersLabel: 'Angebote',
     neighbourhoodLabel: 'Bezirke',
     searchRestaurant: 'Suche',
-    offers: {
-      Food: 'Essen',
-      Wine: 'Wein',
-      Drinks: 'Getränke',
-      Giftcards: 'Gutscheine',      
-      Coffee: 'Kaffee',
-      Pastries: 'Gebäck',
-      Bread: 'Brot',
-      Beer: 'Bier',
-    },
     delivery: 'Lieferung',
     orderLabel: 'Anschauen und Bestellen',
   },
@@ -31,16 +22,6 @@ const pageContent = {
     offersLabel: 'Offers',
     neighbourhoodLabel: 'Neighbourhoods',
     searchRestaurant: 'Search',
-    offers: {
-      Food: 'Food',
-      Wine: 'Wine',
-      Drinks: 'Drinks',
-      Giftcards: 'Gift Cards',      
-      Coffee: 'Coffee',
-      Pastries: 'Pastries',
-      Bread: 'Bread',
-      Beer: 'Beer',
-    },
     delivery: 'Delivery',
     orderLabel: 'View and order',
   },
@@ -63,31 +44,41 @@ const ListItem = ({ restaurant, content }) => {
       <div className="relative h-full flex flex-col items-start bg-white rounded-lg overflow-hidden p-4 sm:p-8 lg:px-12">
         <div className="flex-auto">
           {name && <h3 className="text-xl sm:text-2xl mb-2">{name}</h3>}
-          {address && <p className="text-xs sm:text-sm mb-2">{address}<span className="inline-block font-medium text-xs sm:text-sm bg-teal px-2 py-1 m-1"> {neighbourhood} </span></p>}
-          
-          
+          {address && (
+            <p className="text-xs sm:text-sm mb-2">
+              {address}
+              <span className="inline-block font-medium text-xs sm:text-sm bg-teal px-2 py-1 m-1">
+                {' '}
+                {neighbourhood}{' '}
+              </span>
+            </p>
+          )}
+
           <p className="text-sm mb-4">
-            {phone && <a href={"tel:" + phone}>{phone}</a> }
+            {phone && <a href={'tel:' + phone}>{phone}</a>}
             {phone && email && <span> | </span>}
-            {email && <a href={"mailto:" + email}>{email}</a> }
+            {email && <a href={'mailto:' + email}>{email}</a>}
           </p>
           {description && (
             <p className="max-w-xl text-sm sm:text-base mb-4">{description}</p>
           )}
           {offers && !!offers.length && (
             <ul className="-m-1 mb-6">
-              {offers.map(offer => (
-                <li
-                  key={offer}
-                  className="inline-block font-medium text-xs sm:text-sm bg-teal px-2 py-1 m-1"
-                >
-                  {content.offers[offer]}
-                </li>
-              ))}
+              {offers.length &&
+                offers.map(offer => {
+                  return (
+                    <li
+                      key={offer}
+                      className="inline-block font-medium text-xs sm:text-sm bg-teal px-2 py-1 m-1"
+                    >
+                      {offer}
+                    </li>
+                  )
+                })}
             </ul>
           )}
         </div>
-        {url &&
+        {url && (
           <a
             href={url.includes('http') ? url : 'https://' + url}
             target="_blank"
@@ -96,7 +87,7 @@ const ListItem = ({ restaurant, content }) => {
           >
             {content.orderLabel}&nbsp;&nbsp;&nbsp;⟶
           </a>
-        }
+        )}
         {delivery && (
           <div className="sm:absolute top-0 right-0 font-medium text-sm sm:bg-teal sm:border-b border-sand sm:px-2 sm:py-1 mt-4 sm:m-2">
             ✓ Delivery available
@@ -107,68 +98,55 @@ const ListItem = ({ restaurant, content }) => {
   )
 }
 
-class List extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { restaurants: this.props.restaurants }
-  }
-  
-  componentDidMount() {
-    this.setState({restaurants: shuffle(this.state.restaurants)})
-  }
-
-  render () {
-    let restaurants =this.state.restaurants
-    return (
-      <ul className="flex flex-wrap -m-3">
-        {restaurants
-          // Filter for necessary content
-          .filter(
-            restaurant =>
-              restaurant.name &&
-              restaurant.description &&
-              restaurant.url
-          )
-          // Filter for delivery
-          .filter(restaurant =>
-            this.props.filterDelivery ? restaurant.delivery : true
-          )
-          // Filter for offers
-          .filter(restaurant =>
-            this.props.filterOffers && this.props.filterOffers.length
-              ? this.props.filterOffers.every(offer =>
-                  restaurant.offerings.includes(offer)
-                )
-              : true
-          )
-          // Filter for neighbourhoods
-          .filter(restaurant => {
-            return this.props.filterNeighbourhoods && this.props.filterNeighbourhoods.length
-            ? this.props.filterNeighbourhoods.every(neighbourhood =>
-                restaurant.neighbourhood === neighbourhood
+const List = ({
+  restaurants,
+  filterDelivery,
+  filterOffers,
+  filterNeighbourhoods,
+  content,
+}) => {
+  return (
+    <ul className="flex flex-wrap -m-3">
+      {restaurants
+        // Filter for necessary content
+        .filter(restaurant => restaurant.name && restaurant.url)
+        // Filter for delivery
+        .filter(restaurant => (filterDelivery ? restaurant.delivery : true))
+        // Filter for offers
+        .filter(restaurant =>
+          filterOffers && filterOffers.length
+            ? filterOffers.every(offer =>
+                restaurant?.offerings?.includes(offer)
               )
             : true
-          })
-          .map(restaurant => (
-            <ListItem
-              key={restaurant.id}
-              restaurant={restaurant}
-              content={this.props.content}
-            />
-          ))}
-      </ul>
-    )
-  }
+        )
+        // Filter for neighbourhoods
+        .filter(restaurant => {
+          return filterNeighbourhoods && filterNeighbourhoods.length
+            ? filterNeighbourhoods.every(
+                neighbourhood => restaurant.neighbourhood === neighbourhood
+              )
+            : true
+        })
+        .map(restaurant => (
+          <ListItem
+            key={restaurant.id}
+            restaurant={restaurant}
+            content={content}
+          />
+        ))}
+    </ul>
+  )
 }
-export default ({ restaurants, neighbourhoods }) => {
+
+export default ({ restaurants, neighbourhoods, offerings }) => {
   const { language } = useContext(LanguageContext)
   const content = pageContent[language]
 
   const [filterDelivery, setFilterDelivery] = useState(false)
-  const [filterSearch, setFilterSearch] = useState("")
+  const [filterSearch, setFilterSearch] = useState('')
   const [filterOffers, setFilterOffers] = useState([])
   const [filterNeighbourhoods, setFilterNeighbourhoods] = useState([])
-
   if (restaurants && !!restaurants.length)
     return (
       <>
@@ -181,7 +159,6 @@ export default ({ restaurants, neighbourhoods }) => {
                 {content.title}
               </h2>
               <div className="flex flex-wrap sm:flex-no-wrap items-end -m-1 mb-6">
-                
                 <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0">
                   <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0 justify-between">
                     <p className="w-full sm:w-auto font-medium m-1 mr-2">
@@ -198,39 +175,38 @@ export default ({ restaurants, neighbourhoods }) => {
                     </label>
                   </div>
                   <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0">
-                    {['Food', 'Wine', 'Drinks', 'Giftcards', 'Coffee', 'Pastries', 'Bread', 'Beer'].map(offer => {
-                      const isChecked = filterOffers.includes(offer)
-                      const handleChange = () => {
-                        if (isChecked) {
-                          const newOffers = [...filterOffers]
-                          newOffers.splice(newOffers.indexOf(offer), 1)
-                          setFilterOffers(newOffers)
-                        } else {
-                          setFilterOffers([...filterOffers, offer])
-                        }
-                      }
-                      return (
-                        <label
-                          key={offer}
-                          className={
-                            'inline-block font-medium border-2 border-navy cursor-pointer px-2 py-1 m-1' +
-                            (isChecked
-                              ? ' text-sand-light bg-navy'
-                              : ' text-navy')
+                    {!!offerings.length &&
+                      offerings.map(offer => {
+                        const isChecked = filterOffers.includes(offer)
+                        const handleChange = () => {
+                          if (isChecked) {
+                            const newOffers = [...filterOffers]
+                            newOffers.splice(newOffers.indexOf(offer), 1)
+                            setFilterOffers(newOffers)
+                          } else {
+                            setFilterOffers([...filterOffers, offer])
                           }
-                        >
-                          <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={handleChange}
-                            className="sr-only"
-                          />
-                          <span className="select-none">
-                            {content.offers[offer]}
-                          </span>
-                        </label>
-                      )
-                    })}
+                        }
+                        return (
+                          <label
+                            key={offer}
+                            className={
+                              'inline-block font-medium border-2 border-navy cursor-pointer px-2 py-1 m-1' +
+                              (isChecked
+                                ? ' text-sand-light bg-navy'
+                                : ' text-navy')
+                            }
+                          >
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={handleChange}
+                              className="sr-only"
+                            />
+                            <span className="select-none">{offer}</span>
+                          </label>
+                        )
+                      })}
                   </div>
                 </div>
               </div>
@@ -241,14 +217,22 @@ export default ({ restaurants, neighbourhoods }) => {
                   </p>
                   <div className="w-full flex flex-wrap items-center mb-4 sm:mb-0 md:max-w-3xl max-w-xl">
                     {neighbourhoods.map(neighbourhood => {
-                      const isChecked = filterNeighbourhoods.includes(neighbourhood)
+                      const isChecked = filterNeighbourhoods.includes(
+                        neighbourhood
+                      )
                       const handleChangeN = () => {
                         if (isChecked) {
                           const newNeighbourhoods = [...filterNeighbourhoods]
-                          newNeighbourhoods.splice(newNeighbourhoods.indexOf(neighbourhood), 1)
+                          newNeighbourhoods.splice(
+                            newNeighbourhoods.indexOf(neighbourhood),
+                            1
+                          )
                           setFilterNeighbourhoods(newNeighbourhoods)
                         } else {
-                          setFilterNeighbourhoods([...filterNeighbourhoods, neighbourhood])
+                          setFilterNeighbourhoods([
+                            ...filterNeighbourhoods,
+                            neighbourhood,
+                          ])
                         }
                       }
                       return (
@@ -274,7 +258,7 @@ export default ({ restaurants, neighbourhoods }) => {
                   </div>
                 </div>
               </div>
-              <List 
+              <List
                 restaurants={restaurants}
                 filterDelivery={filterDelivery}
                 filterOffers={filterOffers}
@@ -307,38 +291,56 @@ export async function getStaticProps() {
     .select({
       maxRecords: 999999, // don't want to paginate...
       view: 'Grid view', // NOTE: changing the view name will break things
-      fields: ['name', 'address', 'description', 'offerings', 'delivery', 'phone', 'url', 'neighbourhood', 'email'],
+      fields: [
+        'name',
+        'address',
+        'description',
+        'offerings',
+        'delivery',
+        'phone',
+        'url',
+        'neighbourhood',
+        'email',
+      ],
       filterByFormula: "display = '1'",
     })
     .all()
-  
-  const restaurants = await Promise.all(records.map(record => {
-    const info = record.fields
-    info.id = record.id
-    return info
-  }))
+
+  const restaurants = await Promise.all(
+    records.map(record => {
+      const info = record.fields
+      info.id = record.id
+      return info
+    })
+  )
 
   const neighbourhoods = Array.from(
     new Set(
-      restaurants.reduce( (hoods, restaurant) => {
-        if(restaurant.neighbourhood != undefined) hoods.push(restaurant.neighbourhood)
+      restaurants.reduce((hoods, restaurant) => {
+        if (restaurant.neighbourhood != undefined)
+          hoods.push(restaurant.neighbourhood)
         return hoods
       }, [])
     )
   )
 
-  return { props: { restaurants, neighbourhoods } }
+  let offersArr = []
+  restaurants.forEach(({ offerings }) => {
+    if (!offerings || !offerings.length) return
+    offersArr = [...offersArr, ...offerings]
+  })
+  const offerings = Array.from(new Set(offersArr))
+
+  return { props: { restaurants, neighbourhoods, offerings } }
 }
 
 export function shuffle(arr) {
-  var i,
-        j,
-        temp;
-    for (i = arr.length - 1; i > 0; i--) {
-        j = Math.floor(Math.random() * (i + 1));
-        temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
-    }
-    return arr;  
+  var i, j, temp
+  for (i = arr.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1))
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+  }
+  return arr
 }

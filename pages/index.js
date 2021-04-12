@@ -64,7 +64,7 @@ const pageContent = {
     add: 'Füg dein Restaurant hinzu',
   },
   'en-GB': {
-    titleBlue: 'Discover the unique way food intertwines the cultures of',
+    titleBlue: 'Discover the unique way food intertwines the cultures of Los Angeles',
     titlePink: 'the African Diaspora',
     description: `Food brings people together, connecting and transcending individuals, languages and cultures! Explore the diversity of African Diasporic food.`,
     find: 'Find restaurants',

@@ -22,7 +22,7 @@ export default () => {
             </a>
             {` & `}
             <a
-             href="https://1305.digitial"
+             href="https://1305.digital"
              target="_blank"
              rel="noopener"
             >

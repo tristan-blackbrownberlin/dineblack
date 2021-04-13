@@ -54,42 +54,41 @@ const pageContent = {
   },
   'en-GB': {
     title: 'About',
-    description:  `Home.
-For some, it's a physical place.
-For others, its a state of mind, a feeling.
+    description:  `Join mailing list 
 
-And yet for myself and countless others, it's a loaded concept that they grapple with and try to define and find all at once.
-
-How is this idea of 'home' further compounded for not only a person but a 'black person' of the African Diaspora?
-
-Some of us moved to another country willingly to build a better life for our families. Far more of us were transported unwillingly and landed on distant shores- leaving much of our heritage behind.
-Yet, we all understand that nagging feeling of simultaneously belonging to a place and the persistent knowledge of not.
-
-So then what is 'home'?
-
-Though definitions can vary, one doesn't fully understand the significance of home until you are away from it- whether it is your first time sleeping over at a friend's at five or moving across the globe at 25.
-
-I know this first hand.
-
-There was no specific place for me to connect to this feeling of homesickness. I soon realized that 90% of the time, it manifested itself as an aching for the food I knew and loved.
-
-There was (and still is) no greater comfort to me than the fried catfish and collard greens, I instinctually know. They bring my heart & soul back to this familiar place.
-
-Those dishes might be Afro-American soul food, but as my global reach broadened, and knowledge of the Diaspora therein, I was able to find solace elsewhere as well…
-
-It came on the streets of London at the Notting Hill Carnival via a plate of Callaloo, greens scooped up and piled high on a paper plate by a kind-faced Jamaican woman that laughed when she saw my eyes light up as she handed it over. With each bite, I knew that moment was exactly where I was supposed to be.
-
-It came at a friend's home in Berlin, where I enjoyed a meal of traditional Nigerian food. I thought the cuisine was foreign to me until I tasted his stewed greens. He excused them as 'not being like his moms', but he tried to do it from memory. It might have been a simple version of Efo Riro, maybe not. Nonetheless, there's something to be said for muscle memory-because they tasted like home to me.
-
-And it was resurrected at 'home' in Stockholm when I discovered I could replace my beloved collard greens with Tuscan black kale and other greens to get tremendous results that warmed my heart and belly just as well.
-
-It is no coincidence that these greens cooked by fellow black folks felt just right to me. Despite varying so much in the specific ingredients, the same 'flavor' was still there- and by flavor, I don't mean seasonings. I mean something far more guttural, something that only the soul can recognize.
-
-So with that- I implore my brother & sisters of the Diaspora to embrace, explore, and support the food being prepared by our kin right here in our backyard.
-
-No matter your definition of home- I'm quite sure a comforted belly is part of it.
-
-Words by Kendra Valentine - Story strategist, food nerd, and producer/presenter of the award-winning Americulinariska Youtube cooking series `,
+    We are setting out to bring awareness to Black owned businesses and to highlight the restaurants and food and beverage influencers of the African diaspora worldwide. This project is Black owned and operated, open source and relies on community information and the work of countless creators previous innovations to exist. 
+    
+    Support your local Black eateries and help these Black owned restaurants keep the lights on by checking out your cities directory listings, ordering takeout, tipping well and while you’re here, joining our mailing list to stay updated. If you don’t see your fav Black owned restaurant or spot please nominate the owners and help us spread the word - tell the owners and all your friends about us. 
+    
+    SUPPORT YOUR LOCAL BLACK OWNED RESTAURANTS DURING THE LOCKDOWN BY GETTING TAKE-OUT
+    
+    Your local Black owned food joints are struggling during the current crisis — but they're still cooking! Help them keep the lights on, by getting take-out from the best restaurants in your area.
+    
+    Join Our Mailing List
+    
+    We are currently in these cities and are planning to curate and maintain these sites worldwide. 
+    Berlin
+    Los Angeles
+    New York
+    Philladelphia
+    New Jersey
+    Seattle
+    London
+    Paris
+    Amsterdam
+    Miami
+    New Orleans
+    
+    Services - About Us
+    In addition to providing these directories of Black Owned Restaurants and highlighting F&B Influencers of the African Diaspora, The Diaspora Eats (TDE) was established in 2020 and actively contributes to the Digitization of the hospitality sector. An international team of experts implements a variety of digital solutions and innovations for hotels, restaurants, caterers, festivals, f&b influencers and trader businesses.
+    
+    Are you interested in a new order system? 
+    We see & understand that the current situation is chaotic and comes with many new challenges.
+    
+    We have launched 1305.digital to help you Go Digital with qr enabled digital menus and a full digital ordering system. Sign up at https://1305.digital for a digital ordering system that is made for times like these and supercharge the ordering experience for your business. 
+    
+    
+    Join Our Mailing List `,
     contact: 'We decided to kick off this exciting project in our home town of Berlin. We are very interested in expanding and providing this resource to other cities in Germany and Europe. Tell us more, inquiries and site feedback to ',
   },
 }

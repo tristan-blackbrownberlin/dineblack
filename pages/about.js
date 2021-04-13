@@ -40,7 +40,7 @@ export default () => {
 
 const pageContent = {
   'de-DE': {
-    title: 'Über uns',
+    title: 'Über uns'
     description: `Die afrikanische Diaspora bezieht sich auf die vielen Gemeinschaften von Menschen afrikanischer Herkunft, die aufgrund historischer Bewegungen auf der ganzen Welt verstreut sind.
 
     Die afrikanische Diaspora hat 140 Millionen Einwohner, während Afrika 1,2 Milliarden Einwohner hat. Zu den bevölkerungsreichsten Ländern der afrikanischen Diaspora gehören Brasilien, Kolumbien, Amerika, die Dominikanische Republik und Haiti.
@@ -49,11 +49,11 @@ const pageContent = {
 
     Im Wesentlichen wurden sie in verschiedene Länder auf der ganzen Welt gebracht, voneinander und von ihren Heimatländern getrennt. Kulturen in der afrikanischen Diaspora bemühen sich, das, was durch ihre globale Zerstreuung und Kolonialisierung verloren gegangen ist, wieder einzufangen. Viele, die es gewohnt sind, einfach als schwarz angesehen zu werden, suchen nach einer Terminologie, die sie als Individuen kategorisiert, die Mitglieder einer größeren Kultur sind, die nicht nur die Farbe ihrer Haut widerspiegelt. Für Afrikaner in der Diaspora bedeutet Entkolonialisierung, ihre ihnen gestohlene afrikanische Identität zurückzugewinnen und die negativen Ansichten über Afrika zu zerstreuen, die sie sozialisiert haben, um sie unter Kolonialisierung zu halten, und Afrika für seine wahre Schönheit zu sehen.
 
-    Alle gekochten Speisen zeigen eine Sache an, die Liebe zu und für die eigene Gemeinschaft. `,
-    contact: 'Anfragen zur Seite oder Technik an ',
+    Alle gekochten Speisen zeigen eine Sache an, die Liebe zu und für die eigene Gemeinschaft. `
+    contact: 'Anfragen zur Seite oder Technik an '
   },
   'en-GB': {
-    title: 'About',
+    title: 'About'
     description:  `Join mailing list 
 
     We are setting out to bring awareness to Black owned businesses and to highlight the restaurants and food and beverage influencers of the African diaspora worldwide. This project is Black owned and operated, open source and relies on community information and the work of countless creators previous innovations to exist. 

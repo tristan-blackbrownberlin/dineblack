@@ -86,10 +86,10 @@ const pageContent = {
     Are you interested in a new order system? 
     We see & understand that the current situation is chaotic and comes with many new challenges.
     
-    We have launched 1305.digital to help you Go Digital with QR code enabled digital menus and a full digital ordering system. Sign up at <a href="https://1305.digital/" target="_blank" rel="noopener"> for a digital ordering system that is made for times like these and supercharge the ordering experience for your business. 
+    We have launched 1305.digital to help you Go Digital with QR code enabled digital menus and a full digital ordering system. Sign up at `<a href="https://1305.digital/" target="_blank" rel="noopener">` for a digital ordering system that is made for times like these and supercharge the ordering experience for your business. 
     
     
     Join Our Mailing List `,
-    contact: 'We decided to kick off this exciting project in our home town of Berlin. We are very interested in expanding and providing this resource to other cities in Germany and Europe. Tell us more, inquiries and site feedback to ',
+    contact: 'We decided to kick off this exciting project in our home town of Berlin. We are very interested in expanding and providing this resource to other cities worldwide. Tell us more, inquiries and site feedback to ',
   },
 }

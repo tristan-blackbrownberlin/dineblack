@@ -20,14 +20,14 @@ export default () => {
             </h2>
             <p className="max-w-xl text-navy-light text-lg mb-4 whitespace-pre-line">
               {content.description}
-              <a href="https://www.instagram.com/misskendrav/" target="_blank" rel="noopener">
-                Find out more about Kendra
+              <a href="https://1305.digital/" target="_blank" rel="noopener">
+                Find out more about 1305 Digital
               </a>
               .
             </p>
             <p className="max-w-xl text-navy-light text-lg mb-4">
               {content.contact}
-              <a href="mailto:hello@blackbrownberlin.com">hello@blackbrownberlin.com</a>.
+              <a href="mailto:hello@1305.digital">hello@1305.digital</a>.
               .
             </p>
           </div>
@@ -79,13 +79,14 @@ const pageContent = {
     Miami
     New Orleans
     
-    Services - About Us
-    In addition to providing these directories of Black Owned Restaurants and highlighting F&B Influencers of the African Diaspora, The Diaspora Eats (TDE) was established in 2020 and actively contributes to the Digitization of the hospitality sector. An international team of experts implements a variety of digital solutions and innovations for hotels, restaurants, caterers, festivals, f&b influencers and trader businesses.
+    SERVICES
+
+    In addition to providing these directories of Black Owned Restaurants and highlighting F&B Influencers of the African Diaspora, The Diaspora Eats (TDE) was established in 2020 in resonse to our global situation and actively contributes to the digitization of the hospitality sector. An international team of experts implements a variety of digital solutions and innovations for hotels, restaurants, caterers, festivals, f&b influencers and trader businesses.
     
     Are you interested in a new order system? 
     We see & understand that the current situation is chaotic and comes with many new challenges.
     
-    We have launched 1305.digital to help you Go Digital with qr enabled digital menus and a full digital ordering system. Sign up at https://1305.digital for a digital ordering system that is made for times like these and supercharge the ordering experience for your business. 
+    We have launched 1305.digital to help you Go Digital with QR code enabled digital menus and a full digital ordering system. Sign up at <a href="https://1305.digital/" target="_blank" rel="noopener"> for a digital ordering system that is made for times like these and supercharge the ordering experience for your business. 
     
     
     Join Our Mailing List `,
